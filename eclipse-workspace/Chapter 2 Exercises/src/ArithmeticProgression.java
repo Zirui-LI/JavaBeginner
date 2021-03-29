@@ -21,8 +21,15 @@ public class ArithmeticProgression extends Progression{
 		pro2.printProgression(10);
 		Progression pro3 = new ArithmeticProgression(3);
 		pro3.printProgression(10);
-		Progression pro4 = new ArithmeticProgression();
+		Progression pro4 = new ArithmeticProgression(128);
 		pro4.printProgression(10);
 	}
 
 }
+
+//Read it
+//ship it
+//Buy it
+//Read it
+//Buy it
+//Buy it

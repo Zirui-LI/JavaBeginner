@@ -34,7 +34,7 @@ public class CreditCard {
 		if (amount > 0) {
 			balance -= amount;
 		} else {
-			System.out.println("Zero/Negative payment amount!");
+			throw new IllegalArgumentException("Zero/Negative payment amount!");
 		}
 			
 	}
@@ -69,7 +69,7 @@ public class CreditCard {
 			while (card.getBalance() > 200.0) {
 				card.makePayment(200);
 				System.out.println("New balance = " + card.getBalance( )); 
-				}
+				}    
 		}
 		
 		
