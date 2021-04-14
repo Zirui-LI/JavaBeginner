@@ -105,6 +105,24 @@ public class SinglyLinkedList<E> {
 		System.out.println("NULL");
 		
 	}
+	public int getSize() {
+		if(isEmpty()) return 0;
+		int size = 1;
+		Node<E> walk = head;
+		while(walk.getNext() != null) {
+			size++;
+			walk = walk.getNext();
+		}
+		return size;
+	}
+	
+	public void rotate() {
+		Node<E> temp = head;
+		head = head.getNext();
+		temp.setNext(null);
+		tail.setNext(temp);
+		tail = temp;
+	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -116,7 +134,10 @@ public class SinglyLinkedList<E> {
 		Integer c = Integer.valueOf(3);
 		sll.addLast(c);
 		sll.PrintSinglyLinkedList();
+		sll.rotate();
+		sll.PrintSinglyLinkedList();
 		System.out.println(sll.FindSecondToLast());
+		System.out.println(sll.getSize());
 	}
 
 }
