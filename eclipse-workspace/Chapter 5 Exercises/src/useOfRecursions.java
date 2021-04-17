@@ -1,3 +1,4 @@
+import java.io.File;
 
 public class useOfRecursions {
 	
@@ -17,6 +18,15 @@ public class useOfRecursions {
 		}
 	}
 	
+	private static void drawLine(int tickLength, int tickLabel) {
+		for (int j = 0; j < tickLength; j++)
+			System.out.print("-");
+		if (tickLabel >= 0)
+			System.out.print(" " + tickLabel);
+		System.out.print("\n");
+			
+	}
+	
 	public static boolean binarySearch(int[] data, int target, int low, int high) {
 		/* Returns true if the target value is found in the indicated portion of the data array. 
 		 This search only considers the array portion from data[low] to data[high] inclusive. */
@@ -33,13 +43,39 @@ public class useOfRecursions {
 		}
 	}
 	
-	private static void drawLine(int tickLength, int tickLabel) {
-		for (int j = 0; j < tickLength; j++)
-			System.out.print("-");
-		if (tickLabel >= 0)
-			System.out.print(" " + tickLabel);
-		System.out.print("\n");
-			
+
+	
+	
+	public static long diskUsage(File root) {
+		long total = root.length();
+		if (root.isDirectory()) {
+			for (String childname : root.list()) {
+				File child = new File(root, childname);
+				total += diskUsage(child);
+			}
+		}
+		System.out.println(total + "\t" + root);
+		return total;
+	}
+	
+	public static void reverseArray(int[] data, int low, int high) {
+		if (low < high) {
+			int temp = data[low];
+			data[low] = data[high];
+			data[high] = temp;
+			reverseArray(data, low + 1, high - 1);
+		}
+	}
+	
+	public static int binarySum(int[] data, int low, int high) {
+		if (low > high)
+			return 0 ;
+		else if (low == high)
+			return data[low];
+		else {
+			int mid = (low + high) / 2;
+			return binarySum(data, low, mid) + binarySum(data, mid+1, high);
+		}
 	}
 	
 	public static void main(String[] args) {
