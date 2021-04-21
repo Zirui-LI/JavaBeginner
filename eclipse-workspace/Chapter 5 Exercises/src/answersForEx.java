@@ -81,24 +81,32 @@ public class answersForEx {
 		if (n == 0)
 			return 1;
 		else {
-			double partial = x;
-			int n1 = n;
-			while(n1/2 > 0) {			
-				partial = partial * partial;
-				if(n1 % 2 == 1) partial = partial*x;
-				n1 = n1/2;
+			double result = 1;
+			while (n > 0) {
+				while ((n & 1) == 0) {
+					n /= 2;
+					x *= x;
+				}
+				n--;
+				result *= x;
 			}
-			return partial;
+			return result;
 		}
+		
+	}
+	
+	
+	// Ex 5-10
 
-		   
-//		else {
-//			double partial = power(x, n/2);
-//			double result = partial * partial;
-//			if (n % 2 == 1)
-//				result *= x;
-//			return result;
-//		}
+	public static int sum(int[][] data, int x, int n1, int y, int n2) {
+	    if (n1 == 1 && n2 == 1) {
+	        return data[x][y];
+	    }
+	    if (n1 == 1) {
+	        return sum(data, x, n1, y, (n2 / 2)) + sum(data, x, n1, y + (n2 / 2), n2 - (n2 / 2));
+	    } else {
+	        return sum(data, x, (n1 / 2), y, n2) + sum(data, x + (n1 / 2), n1 - (n1 / 2), y, n2);
+	    }
 	}
 	
 	public static void main(String[] args) {
@@ -124,7 +132,10 @@ public class answersForEx {
 		String s = "13153";
 		System.out.println(convertStringToInteger(s, 5));
 		// Ex 5.9
-		System.out.println(powerNonRecursive(2, 9));
+		System.out.println(powerNonRecursive(2, 11));
+		// Ex 5.11
+		int [][] a = {{1, 2, 3, 4}, {5, 6, 7, 8}};
+		System.out.println(sum(a, 0, 2, 0, 4));
 	}
 
 }
